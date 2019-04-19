@@ -9,14 +9,11 @@
 plugins {
     // Apply the java plugin to add support for Java
     id 'java'
-
-    // Apply the application plugin to add support for building an application
-    id 'application'
     id 'war'
 }
 
-// Define the main class for the application
-mainClassName = 'App'
+group "br.com.home"
+version "1.0.0-SNAPSHOT"
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
