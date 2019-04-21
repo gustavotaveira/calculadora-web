@@ -24,4 +24,9 @@ public class CalculadoraResource {
         Numero soma = calculadoraService.somar(numero1, numero2);
         return soma.getValor().toString();
     }
+
+    @RequestMapping("/home")
+    public String calculadora() {
+        return "calculadora";
+    }
 }
