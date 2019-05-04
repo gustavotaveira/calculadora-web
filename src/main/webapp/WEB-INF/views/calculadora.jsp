@@ -20,10 +20,10 @@
             var numero1 = "";
             var numero2 = "";
 
-            if (operacao == "somar") {
+            if (operacao === "somar") {
                 numero1 = $("#numero_soma1").val();
                 numero2 = $("#numero_soma2").val();
-            } else if (operacao == "subtrair") {
+            } else if (operacao === "subtrair") {
                 numero1 = $("#numero_subtrair1").val();
                 numero2 = $("#numero_subtrair2").val();
             }
