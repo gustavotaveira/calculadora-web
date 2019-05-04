@@ -17,12 +17,24 @@ public class CalculadoraService {
     }
 
     public Numero somar(String numero1, String numero2) {
-        if (StringUtils.isNumeric(numero1) &&
-                StringUtils.isNumeric(numero2)) {
+        if (saoNumeros(numero1, numero2)) {
             return calculadora.somar(numero1, numero2);
         } else {
             throw new RuntimeException("Voce deve informar apenas numeros!");
         }
 
+    }
+
+    public Numero subtrair(String numero1, String numero2) {
+
+        if (saoNumeros(numero1, numero2)) {
+            return calculadora.subtrair(numero1, numero2);
+        } else {
+            throw new RuntimeException("Voce deve informar apenas numeros!");
+        }
+    }
+
+    private boolean saoNumeros(String numero1, String numero2) {
+        return StringUtils.isNumeric(numero1) && StringUtils.isNumeric(numero2);
     }
 }

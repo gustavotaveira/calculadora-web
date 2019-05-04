@@ -18,6 +18,11 @@ public class CalculadoraResource {
         this.calculadoraService = calculadoraService;
     }
 
+    @RequestMapping("/home")
+    public String calculadora() {
+        return "calculadora";
+    }
+
     @ResponseBody
     @RequestMapping(value = "somar", method = RequestMethod.POST)
     public String somar(String numero1, String numero2) {
@@ -25,8 +30,10 @@ public class CalculadoraResource {
         return soma.getValor().toString();
     }
 
-    @RequestMapping("/home")
-    public String calculadora() {
-        return "calculadora";
+    @ResponseBody
+    @RequestMapping(value = "subtrair", method = RequestMethod.POST)
+    public String subtrair(String numero1, String numero2) {
+        Numero subtracao = calculadoraService.subtrair(numero1, numero2);
+        return subtracao.getValor().toString();
     }
 }

@@ -5,27 +5,43 @@
         input {
             display: block;
         }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            display: inline-block;
+            border: 1px solid black;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script>
-        function somar() {
+        function processa(operacao) {
 
-            var numero1 = $("#numero1").val();
-            var numero2 = $("#numero2").val();
+            var numero1 = "";
+            var numero2 = "";
+
+            if (operacao == "somar") {
+                numero1 = $("#numero_soma1").val();
+                numero2 = $("#numero_soma2").val();
+            } else if (operacao == "subtrair") {
+                numero1 = $("#numero_subtrair1").val();
+                numero2 = $("#numero_subtrair2").val();
+            }
+
 
             $.ajax({
-                url: "/calculadora/somar",
+                url: "/calculadora/" + operacao,
                 method: "POST",
                 data: {
                     "numero1": numero1,
                     "numero2": numero2
                 },
                 success: function (resposta) {
-                    alert("A soma e " + resposta);
+                    alert("Operacao: " + operacao + "\nresultado: " + resposta);
                     limparCampos();
                 },
-                error: function () {
-                    alert("nao funcionou");
+                error: function (erro) {
+                    alert("Erro. Mensagem: " + erro);
                     limparCampos();
                 }
             });
@@ -38,12 +54,19 @@
     </script>
 </head>
 <body>
-<div>
-    <label for="numero1">Informe primeiro numero:</label>
-    <input id="numero1" type="number" name="numero1" required/>
-    <label for="numero2">Informe segundo numero:</label>
-    <input id="numero2" type="number" name="numero2" required/>
-    <a href="#" onclick="somar()">Somar</a>
+<div class="box">
+    <label for="numero_soma1">Informe primeiro numero:</label>
+    <input id="numero_soma1" type="number" name="numero1" required/>
+    <label for="numero_soma2">Informe segundo numero:</label>
+    <input id="numero_soma2" type="number" class="numero2" name="numero2" required/>
+    <a href="#" onclick="processa('somar')">Somar</a>
+</div>
+<div class="box">
+    <label for="numero_subtrair1">Informe primeiro numero:</label>
+    <input id="numero_subtrair1" type="number" name="numero1" required/>
+    <label for="numero_subtrair2">Informe segundo numero:</label>
+    <input id="numero_subtrair2" type="number" name="numero2" required/>
+    <a href="#" onclick="processa('subtrair')">Subtrair</a>
 </div>
 </body>
 </html>

@@ -22,4 +22,18 @@ public class CalculadoraResourceTestes {
                 .statusCode(200)
                 .body(equalTo("3"));
     }
+
+    @Test
+    public void testaSubtracao() {
+        RestAssuredMockMvc.given()
+                .standaloneSetup(new CalculadoraResource(new CalculadoraService(new Calculadora())))
+                .param("numero1", "3")
+                .param("numero2", "4")
+                .when()
+                .post("/subtrair")
+                .then()
+                .statusCode(200)
+                .body(equalTo("-1"));
+
+    }
 }

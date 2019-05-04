@@ -34,4 +34,24 @@ public class CalculadoraTestes {
 
         Assert.assertEquals(330, soma.getValor().intValue());
     }
+
+    @Test
+    public void testaSubtairInteiros() {
+        String numero = "326";
+        String numero2 = "4";
+
+        Numero soma = calculadora.subtrair(numero, numero2);
+
+        Assert.assertEquals(322, soma.getValor().intValue());
+    }
+
+    @Test
+    public void testaSubtrairDecimais() {
+        String numero = "3.5";
+        String numero2 = "0.5";
+
+        Numero soma = calculadora.subtrair(numero, numero2);
+
+        Assert.assertEquals(3.0, soma.getValor().doubleValue(), 0);
+    }
 }

@@ -25,4 +25,8 @@ public class Numero {
     Numero some(String numero2) {
         return new Numero(this.valor.add(new BigDecimal(numero2)));
     }
+
+    public Numero subtraia(String numero2) {
+        return new Numero(this.valor.subtract(new BigDecimal(numero2)));
+    }
 }
